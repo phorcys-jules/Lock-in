@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lock_in/models/Box.dart';
+import 'components/TabBar.dart';
+import 'components/OneBox.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +15,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Lock\'in',
+      initialRoute: '/home',
+      routes: {
+        '/home': (context) => const MyHomePage(title: 'Bienvenue Jules'),
+        '/map': (context) => const MyHomePage(title: 'Bienvenue Jules'),
+        '/account': (context) => const MyHomePage(title: 'Bienvenue Jules'),
+      },
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Bienvenue Jules'),
     );
   }
 }
@@ -52,39 +60,51 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Container(
             padding: const EdgeInsets.all(20.0),
             margin: const EdgeInsets.all(20),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(40.0)),
-            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  padding: const EdgeInsets.all(20.0),
-                  margin: const EdgeInsets.only(
-                      bottom: 20
-                  ), // otherwise the logo will be tiny
-                  child: const Image(
-                    image: AssetImage('img/colis.png'),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(40.0)),
                   ),
-                ),
-                FittedBox(
-                  fit: BoxFit.contain,
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const <Widget>[
-                        Text("My new phone"),
-                        Text("Centre commercial St Sebastien 54000 Nancy"),
-                        Text("15 jours restant"),
-                      ]),
+                    children: <Widget>[
+                      OneBox(box: Box("title", "address", "timeLeft")),
+                      Container(
+                        height: 200,
+                        padding: const EdgeInsets.all(20.0),
+                        margin: const EdgeInsets.only(
+                            bottom: 20,
+                            top: 20), // otherwise the logo will be tiny
+                        child: const Image(
+                          image: AssetImage('img/colis.png'),
+                        ),
+                      ),
+                      FittedBox(
+                        fit: BoxFit.contain,
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: const <Widget>[
+                              Text("My new phone"),
+                              Text(
+                                "Centre commercial St Sebastien \n 54000 Nancy",
+                                overflow: TextOverflow.fade,
+                              ),
+                              Text("15 jours restant"),
+                            ]),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
         ),
       ),
+      bottomNavigationBar: const MyTabbedPage(),
     );
   }
 }
