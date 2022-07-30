@@ -33,7 +33,7 @@ class _MyTabbedPageState extends State<MyTabbedPage> {
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.work_rounded  ),
+          icon: Icon(Icons.work_rounded),
           label: 'Mes Commandes',
         ),
         BottomNavigationBarItem(

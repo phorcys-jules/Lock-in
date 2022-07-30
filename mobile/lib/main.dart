@@ -38,14 +38,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,52 +50,20 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.all(20.0),
-            margin: const EdgeInsets.all(20),
+            padding: const EdgeInsets.only(left: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      OneBox(box: Box("title", "address", "timeLeft")),
-                      Container(
-                        height: 200,
-                        padding: const EdgeInsets.all(20.0),
-                        margin: const EdgeInsets.only(
-                            bottom: 20,
-                            top: 20), // otherwise the logo will be tiny
-                        child: const Image(
-                          image: AssetImage('img/colis.png'),
-                        ),
-                      ),
-                      FittedBox(
-                        fit: BoxFit.contain,
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: const <Widget>[
-                              Text("My new phone"),
-                              Text(
-                                "Centre commercial St Sebastien \n 54000 Nancy",
-                                overflow: TextOverflow.fade,
-                              ),
-                              Text("15 jours restant"),
-                            ]),
-                      ),
+                      //OneBox(box: Box("title", "address", "timeLeft")),
+                      OneBox(),
+                      OneBox(),
+                      OneBox(),
                     ],
                   ),
                 ),
-              ],
             ),
           ),
-        ),
-      ),
       bottomNavigationBar: const MyTabbedPage(),
     );
   }

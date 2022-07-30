@@ -7,8 +7,8 @@ class Box {
   String timeLeft;
 
   //Constructor
-  Box(this.title, this.address, this.timeLeft) {
-  }
+  Box(this.title, this.address, this.timeLeft);
+  
   factory Box.fromJson(Map<String, dynamic> json) {
     Box b = Box(json['title'], json['address'], json['timeLeft']);
     return b;
