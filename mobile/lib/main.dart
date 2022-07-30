@@ -55,10 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                      //OneBox(box: Box("title", "address", "timeLeft")),
-                      OneBox(),
-                      OneBox(),
-                      OneBox(),
+                      OneBox(box: Box("My new phone", "Centre commercial St Sebastien 54000 Nancy", "15 jours restant")),
+                      OneBox(box: Box("title", "address", "timeLeft")),
                     ],
                   ),
                 ),
